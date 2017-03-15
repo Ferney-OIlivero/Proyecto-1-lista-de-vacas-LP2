@@ -1,18 +1,24 @@
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
+#include <iomanip>
+#include <string.h>
 #include <conio.h>
 #include "cows.h"
 using namespace std;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char *argv[]) {
-	
+	string auxNom;
+	float aux;
+	int auxI;
 	cows vacas[10];
 	int opc=0,cont=0;
-	string nombre;
+	string nombre,raza1;
 	float peso,lts_leche;
 	int raza=1;
+	string nombre1,nombre2;
+	char nom[14], nom2[14];	
 		
 	do{	
 		cout<<"\tElija una Opcion"<<endl<<endl;
@@ -68,11 +74,65 @@ int main(int argc, char *argv[]) {
 				switch (opc){
 					case 1:
 						cout<<"\t\t\tOrden por Nombre"<<endl<<endl<<endl;
-						
+						int v;
+						for(int i=0; i<cont; i++ ){
+							for(int j=0; j<=cont-2; j++){
+								nombre1=vacas[j].getNombre();
+								nombre2=vacas[j+1].getNombre();
+								v=nombre1.size();
+								for (int x=0; x<v; x++){
+									nom[x]=nombre1[x];
+								}
+								v=nombre2.size();
+								for (int y=0; y<v; y++){
+									nom2[y]=nombre2[y];
+								}
+								if(strcmp (nom , nom2) > 0) {
+									aux = vacas[j].getPeso();
+									vacas[j].setPeso(vacas[j+1].getPeso());
+									vacas[j+1].setPeso(aux);
+									
+									auxNom = vacas[j].getNombre();
+									vacas[j].setNombre(vacas[j+1].getNombre());
+									vacas[j+1].setNombre(auxNom);
+									
+									aux = vacas[j].getLitroLeche();
+									vacas[j].setLitroLeche(vacas[j+1].getLitroLeche());
+									vacas[j+1].setLitroLeche(aux);
+									
+									auxI = vacas[j].getRaza();
+									vacas[j].setRaza(vacas[j+1].getRaza());
+									vacas[j+1].setRaza(auxI);
+								}	
+							}							
+						}
 					
 					case 2:
 						cout<<"\t\t\tOrden por Raza"<<endl<<endl<<endl;
-						
+						for(int i=0; i<cont; i++ ){
+							for(int j=0; j<=cont-2; j++){
+								if(vacas[j].getRaza() > vacas[j+1].getRaza()) {
+									aux = vacas[j].getPeso();
+									vacas[j].setPeso(vacas[j+1].getPeso());
+									vacas[j+1].setPeso(aux);
+									
+									auxNom = vacas[j].getNombre();
+									vacas[j].setNombre(vacas[j+1].getNombre());
+									vacas[j+1].setNombre(auxNom);
+									
+									aux = vacas[j].getLitroLeche();
+									vacas[j].setLitroLeche(vacas[j+1].getLitroLeche());
+									vacas[j+1].setLitroLeche(aux);
+									
+									auxI = vacas[j].getRaza();
+									vacas[j].setRaza(vacas[j+1].getRaza());
+									vacas[j+1].setRaza(auxI);
+								}
+							}								
+						}
+						opc=0;
+						system("pause");
+						system("cls");
 						
 					break;
 					
@@ -80,21 +140,87 @@ int main(int argc, char *argv[]) {
 						//Ordenar por peso
 						cout<<"\t\t\tOrden por Peso"<<endl<<endl<<endl;
 							
+						for(int i=0; i<cont; i++ ){
+							for(int j=0; j<=cont-2; j++){
+								if(vacas[j].getPeso() > vacas[j+1].getPeso()) {
+									aux = vacas[j].getPeso();
+									vacas[j].setPeso(vacas[j+1].getPeso());
+									vacas[j+1].setPeso(aux);
+									
+									auxNom = vacas[j].getNombre();
+									vacas[j].setNombre(vacas[j+1].getNombre());
+									vacas[j+1].setNombre(auxNom);
+									
+									aux = vacas[j].getLitroLeche();
+									vacas[j].setLitroLeche(vacas[j+1].getLitroLeche());
+									vacas[j+1].setLitroLeche(aux);
+									
+									auxI = vacas[j].getRaza();
+									vacas[j].setRaza(vacas[j+1].getRaza());
+									vacas[j+1].setRaza(auxI);
+								}
+							}							
+						}
+						opc=0;
+						system("pause");
+						system("cls");								
 					break;
 					
 					case 4:
 						cout<<"\t\tOrden por Litros de Leches Producidos"<<endl<<endl<<endl;
-						
+						for(int i=0; i<cont; i++ ){
+							int minimo = i;
+							for(int j=0; j<=cont-2; j++){
+								if(vacas[j].getLitroLeche() > vacas[j+1].getLitroLeche()) {
+									aux = vacas[j].getPeso();
+									vacas[j].setPeso(vacas[j+1].getPeso());
+									vacas[j+1].setPeso(aux);
+									
+									auxNom = vacas[j].getNombre();
+									vacas[j].setNombre(vacas[j+1].getNombre());
+									vacas[j+1].setNombre(auxNom);
+									
+									aux = vacas[j].getLitroLeche();
+									vacas[j].setLitroLeche(vacas[j+1].getLitroLeche());
+									vacas[j+1].setLitroLeche(aux);
+									
+									auxI = vacas[j].getRaza();
+									vacas[j].setRaza(vacas[j+1].getRaza());
+									vacas[j+1].setRaza(auxI);
+								}
+							}							
+						}
+						opc=0;
+						system("pause");
+						system("cls");						
 					break;
 					
 				}
 			break;
 			case 3:
-				return 0;
+				
 			break;
 		}
 	}while(opc!=3);
 	
+	cout<<setw(15)<<left<<"  Nombre"<<setw(15)<<left<<"  raza"<<setw(15)<<left<<"Peso"<<setw(15)<<left<<"Litro Leche"<<endl<<endl;
+	for (int x=0;x<cont;x++){
+		
+		if (vacas[x].getRaza()==1){
+			raza1="Simmental";
+		}
+		else if(vacas[x].getRaza()==2){
+			raza1="Pasiega";
+		}
+		else if(vacas[x].getRaza()==3){
+			raza1="Jersey";
+		}
+		else if(vacas[x].getRaza()==4){
+			raza1="Guernsey";
+		}
+		
+		cout<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<raza1<<setw(15)<<left<<vacas[x].getPeso()<<setw(19)<<left<<vacas[x].getLitroLeche()<<endl;
+	}	
 	
 	return 0;
-}
+}		
