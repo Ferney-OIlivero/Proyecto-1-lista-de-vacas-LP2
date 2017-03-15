@@ -106,6 +106,29 @@ int main(int argc, char *argv[]) {
 								}	
 							}							
 						}
+						// IMPRIMIR
+						cout<<setw(15)<<left<<"  Nombre"<<setw(15)<<left<<"  raza"<<setw(15)<<left<<"Peso"<<setw(15)<<left<<"Litro Leche"<<endl<<endl;
+						for (int x=0;x<cont;x++){
+		
+							if (vacas[x].getRaza()==1){
+								raza1="Simmental";
+							}
+							else if(vacas[x].getRaza()==2){
+								raza1="Pasiega";
+							}
+							else if(vacas[x].getRaza()==3){
+								raza1="Jersey";
+							}
+							else if(vacas[x].getRaza()==4){
+								raza1="Guernsey";
+							}
+		
+							cout<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<raza1<<setw(15)<<left<<vacas[x].getPeso()<<setw(19)<<left<<vacas[x].getLitroLeche()<<endl;
+						}
+						opc=0;
+						system("pause");
+						system("cls");						
+					break;					
 					
 					case 2:
 						cout<<"\t\t\tOrden por Raza"<<endl<<endl<<endl;
@@ -129,6 +152,25 @@ int main(int argc, char *argv[]) {
 									vacas[j+1].setRaza(auxI);
 								}
 							}								
+						}
+						// IMPRIMIR
+						cout<<setw(15)<<left<<"  Nombre"<<setw(15)<<left<<"  raza"<<setw(15)<<left<<"Peso"<<setw(15)<<left<<"Litro Leche"<<endl<<endl;
+						for (int x=0;x<cont;x++){
+		
+							if (vacas[x].getRaza()==1){
+								raza1="Simmental";
+							}
+							else if(vacas[x].getRaza()==2){
+								raza1="Pasiega";
+							}
+							else if(vacas[x].getRaza()==3){
+								raza1="Jersey";
+							}
+							else if(vacas[x].getRaza()==4){
+								raza1="Guernsey";
+							}
+		
+							cout<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<raza1<<setw(15)<<left<<vacas[x].getPeso()<<setw(19)<<left<<vacas[x].getLitroLeche()<<endl;
 						}
 						opc=0;
 						system("pause");
@@ -161,6 +203,25 @@ int main(int argc, char *argv[]) {
 								}
 							}							
 						}
+						// IMPRIMIR
+						cout<<setw(15)<<left<<"  Nombre"<<setw(15)<<left<<"  raza"<<setw(15)<<left<<"Peso"<<setw(15)<<left<<"Litro Leche"<<endl<<endl;
+						for (int x=0;x<cont;x++){
+		
+							if (vacas[x].getRaza()==1){
+								raza1="Simmental";
+							}
+							else if(vacas[x].getRaza()==2){
+								raza1="Pasiega";
+							}
+							else if(vacas[x].getRaza()==3){
+								raza1="Jersey";
+							}
+							else if(vacas[x].getRaza()==4){
+								raza1="Guernsey";
+							}
+		
+							cout<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<raza1<<setw(15)<<left<<vacas[x].getPeso()<<setw(19)<<left<<vacas[x].getLitroLeche()<<endl;
+						}
 						opc=0;
 						system("pause");
 						system("cls");								
@@ -190,11 +251,29 @@ int main(int argc, char *argv[]) {
 								}
 							}							
 						}
+												// IMPRIMIR
+						cout<<setw(15)<<left<<"  Nombre"<<setw(15)<<left<<"  raza"<<setw(15)<<left<<"Peso"<<setw(15)<<left<<"Litro Leche"<<endl<<endl;
+						for (int x=0;x<cont;x++){
+		
+							if (vacas[x].getRaza()==1){
+								raza1="Simmental";
+							}
+							else if(vacas[x].getRaza()==2){
+								raza1="Pasiega";
+							}
+							else if(vacas[x].getRaza()==3){
+								raza1="Jersey";
+							}
+							else if(vacas[x].getRaza()==4){
+								raza1="Guernsey";
+							}
+		
+							cout<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<raza1<<setw(15)<<left<<vacas[x].getPeso()<<setw(19)<<left<<vacas[x].getLitroLeche()<<endl;
+						}
 						opc=0;
 						system("pause");
 						system("cls");						
 					break;
-					
 				}
 			break;
 			case 3:
@@ -203,24 +282,7 @@ int main(int argc, char *argv[]) {
 		}
 	}while(opc!=3);
 	
-	cout<<setw(15)<<left<<"  Nombre"<<setw(15)<<left<<"  raza"<<setw(15)<<left<<"Peso"<<setw(15)<<left<<"Litro Leche"<<endl<<endl;
-	for (int x=0;x<cont;x++){
-		
-		if (vacas[x].getRaza()==1){
-			raza1="Simmental";
-		}
-		else if(vacas[x].getRaza()==2){
-			raza1="Pasiega";
-		}
-		else if(vacas[x].getRaza()==3){
-			raza1="Jersey";
-		}
-		else if(vacas[x].getRaza()==4){
-			raza1="Guernsey";
-		}
-		
-		cout<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<raza1<<setw(15)<<left<<vacas[x].getPeso()<<setw(19)<<left<<vacas[x].getLitroLeche()<<endl;
-	}	
+	
 	
 	return 0;
 }		
