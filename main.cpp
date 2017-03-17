@@ -38,10 +38,48 @@ int main(int argc, char *argv[]) {
 		switch (opc){
 		
 			case 1:
-				cout<<"\tIngrese los Datos de la Vaca"<<endl<<endl;
+								cout<<"\tIngrese los Datos de la Vaca"<<endl<<endl;
 				int v,a,i;
-				cout<<"Nombre: ";
-				cin>>nombre;
+				do{
+					a=0;
+					do{
+						cout<<"Nombre: ";
+						cin>>nombre;
+						v=nombre.size();
+						if (v>14){
+							cout<<"\nEl nombre el muy largo"<<endl;
+							cout<<"(NO DEBE PASAR DE 14 CARACTERES)\n"<<endl;
+							system("pause");
+							system("cls");
+							cout<<"\tIngrese los Datos de la Vaca"<<endl<<endl;
+						}
+						
+					}while(v>14);
+					v=0;
+				
+					if (cont>0){
+						do{
+							if (nombre == vacas[v].getNombre()){
+								cout<<"El nombre ya existe"<<endl;
+								a=1;
+								system("pause");
+								system("cls");
+								cout<<"\tIngrese los Datos de la Vaca"<<endl<<endl;
+							}
+							v++;
+						}while(v<cont);
+					}
+					
+					if(isalpha(nombre[0])){}
+					else{
+						cout<<"\nEl nombre no debe iniciar con numero\n"<<endl;
+						a=1;
+						system("pause");
+					system("cls");
+					cout<<"\tIngrese los Datos de la Vaca"<<endl<<endl;
+					}
+					
+				}while(a==1);
 				vacas[cont].setNombre(nombre);
 			
 				cout<<"\nRaza: "<<endl<<endl;
