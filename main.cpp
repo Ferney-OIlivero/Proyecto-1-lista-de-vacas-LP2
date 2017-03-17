@@ -14,16 +14,18 @@ cows vacas[ANCHO];
 
 void imprimir_lista(int a);
 void motodo_ordenamiento(int j, int c);
+void ordenOpcional(int pos, int cont);
+void ordenarPorNombre(int c);
 
 int main(int argc, char *argv[]) {
 
-	int opc=0,cont=0;
+	int opc=0,cont=0,pos=0,rep=0;
 	string nombre,raza1;
 	float peso,lts_leche;
 	int raza=1;
-	string nombre1,nombre2;
-	char nom[14], nom2[14];	
-		
+	int contOrden=1;
+	int bandera=0;
+			
 	do{	
 		cout<<"\tElija una Opcion"<<endl<<endl;
 		cout<<"1- Agregar Vaca"<<endl;
@@ -32,6 +34,7 @@ int main(int argc, char *argv[]) {
 		cout<<"Opcion: ";
 		cin>>opc;
 		system("cls");
+	
 		switch (opc){
 		
 			case 1:
@@ -77,24 +80,7 @@ int main(int argc, char *argv[]) {
 				switch (opc){
 					case 1:
 						cout<<"\t\t\tOrden por Nombre"<<endl<<endl<<endl;
-						int v;
-						for(int i=0; i<cont; i++ ){
-							for(int j=0; j<=cont-2; j++){
-								nombre1=vacas[j].getNombre();
-								nombre2=vacas[j+1].getNombre();
-								v=nombre1.size();
-								for (int x=0; x<v; x++){
-									nom[x]=nombre1[x];
-								}
-								v=nombre2.size();
-								for (int y=0; y<v; y++){
-									nom2[y]=nombre2[y];
-								}
-								if(strcmp (nom , nom2) > 0) {
-									motodo_ordenamiento(j, cont);
-								}	
-							}							
-						}
+						ordenarPorNombre(cont);
 						imprimir_lista(cont);
 						opc=0;
 						system("pause");
@@ -102,6 +88,7 @@ int main(int argc, char *argv[]) {
 					break;					
 					
 					case 2:
+						contOrden=1;
 						cout<<"\t\t\tOrden por Raza"<<endl<<endl<<endl;
 						for(int i=0; i<cont; i++ ){
 							for(int j=0; j<=cont-2; j++){
@@ -109,6 +96,25 @@ int main(int argc, char *argv[]) {
 									motodo_ordenamiento(j, cont);									
 								}
 							}								
+						}
+						for (int i=0;i<cont;i++){
+							
+							if(vacas[i].getRaza() == vacas[i+1].getRaza()){
+								contOrden++;
+							}
+							
+							if ((contOrden > 1) && (vacas[i+1].getRaza()!=rep)){
+								if (bandera==0){
+									pos=i;
+									bandera=1;
+								}
+								rep=vacas[i].getRaza();
+								if (vacas[i].getRaza() != vacas[i+1].getRaza()){
+									ordenOpcional(pos, contOrden);
+									contOrden=1;
+									bandera=0;
+								}	
+							}
 						}
 						imprimir_lista(cont);
 						opc=0;
@@ -119,6 +125,7 @@ int main(int argc, char *argv[]) {
 					
 					case 3:
 						//Ordenar por peso
+						contOrden=1;
 						cout<<"\t\t\tOrden por Peso"<<endl<<endl<<endl;
 							
 						for(int i=0; i<cont; i++ ){
@@ -128,6 +135,25 @@ int main(int argc, char *argv[]) {
 								}
 							}							
 						}
+						for (int i=0;i<cont;i++){
+							
+							if(vacas[i].getPeso() == vacas[i+1].getPeso()){
+								contOrden++;
+							}
+							
+							if ((contOrden > 1) && (vacas[i+1].getPeso()!=rep)){
+								if (bandera==0){
+									pos=i;
+									bandera=1;
+								}
+								rep=vacas[i].getPeso();
+								if (vacas[i].getPeso() != vacas[i+1].getPeso()){
+									ordenOpcional(pos, contOrden);
+									contOrden=1;
+									bandera=0;
+								}	
+							}
+						}
 						imprimir_lista(cont);
 						opc=0;
 						system("pause");
@@ -135,6 +161,7 @@ int main(int argc, char *argv[]) {
 					break;
 					
 					case 4:
+						contOrden=1;
 						cout<<"\t\tOrden por Litros de Leches Producidos"<<endl<<endl<<endl;
 						for(int i=0; i<cont; i++ ){
 							int minimo = i;
@@ -143,6 +170,25 @@ int main(int argc, char *argv[]) {
 									motodo_ordenamiento(j, cont);
 								}
 							}							
+						}
+						for (int i=0;i<cont;i++){
+							
+							if(vacas[i].getLitroLeche() == vacas[i+1].getLitroLeche()){
+								contOrden++;
+							}
+							
+							if ((contOrden > 1) && (vacas[i+1].getLitroLeche()!=rep)){
+								if (bandera==0){
+									pos=i;
+									bandera=1;
+								}
+								rep=vacas[i].getLitroLeche();
+								if (vacas[i].getLitroLeche() != vacas[i+1].getLitroLeche()){
+									ordenOpcional(pos, contOrden);
+									contOrden=1;
+									bandera=0;
+								}	
+							}
 						}
 						imprimir_lista(cont);
 						opc=0;
@@ -203,4 +249,56 @@ void motodo_ordenamiento(int j, int c){
 	auxI = vacas[j].getRaza();
 	vacas[j].setRaza(vacas[j+1].getRaza());
 	vacas[j+1].setRaza(auxI);
-}				
+}
+
+void ordenOpcional(int pos, int cont){
+	string nombre1,nombre2;
+	char nom[14], nom2[14];		
+	int v;
+	for(int i=pos; i<pos+cont; i++ ){
+		for(int j=pos; j<=(pos+cont)-2; j++){
+			nombre1=vacas[j].getNombre();
+			nombre2=vacas[j+1].getNombre();
+			v=nombre1.size();
+			for (int x=0; x<v; x++){
+				nom[x]=nombre1[x];
+			}
+			v=nombre2.size();
+			for (int y=0; y<v; y++){
+				nom2[y]=nombre2[y];
+			}
+								
+			if(strcmp (nom , nom2) > 0) {
+				motodo_ordenamiento(j, cont);
+			}						
+								
+		}							
+	}
+}
+
+void ordenarPorNombre(int c){
+	string nombre1,nombre2;
+	char nom[14], nom2[14];		
+	int v;
+	int cont=c;
+	
+	for(int i=0; i<cont; i++ ){
+		for(int j=0; j<=cont-2; j++){
+			nombre1=vacas[j].getNombre();
+			nombre2=vacas[j+1].getNombre();
+			v=nombre1.size();
+			for (int x=0; x<v; x++){
+				nom[x]=nombre1[x];
+			}
+			v=nombre2.size();
+			for (int y=0; y<v; y++){
+				nom2[y]=nombre2[y];
+			}
+								
+			if(strcmp (nom , nom2) > 0) {
+				motodo_ordenamiento(j, cont);
+			}						
+								
+		}							
+	}
+}		
