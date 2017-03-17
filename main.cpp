@@ -5,14 +5,19 @@
 #include <string.h>
 #include <conio.h>
 #include "cows.h"
+#include "definicion.h"
+
 using namespace std;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
+//VARIABLES GLOBALES
+cows vacas[ANCHO];
+
+void imprimir_lista(int a);
 
 int main(int argc, char *argv[]) {
 	string auxNom;
 	float aux;
 	int auxI;
-	cows vacas[10];
 	int opc=0,cont=0;
 	string nombre,raza1;
 	float peso,lts_leche;
@@ -106,7 +111,8 @@ int main(int argc, char *argv[]) {
 								}	
 							}							
 						}
-						// IMPRIMIR
+						imprimir_lista(cont);
+						/* IMPRIMIR
 						cout<<setw(15)<<left<<"  Nombre"<<setw(15)<<left<<"  raza"<<setw(15)<<left<<"Peso"<<setw(15)<<left<<"Litro Leche"<<endl<<endl;
 						for (int x=0;x<cont;x++){
 		
@@ -124,7 +130,7 @@ int main(int argc, char *argv[]) {
 							}
 		
 							cout<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<raza1<<setw(15)<<left<<vacas[x].getPeso()<<setw(19)<<left<<vacas[x].getLitroLeche()<<endl;
-						}
+						}*/
 						opc=0;
 						system("pause");
 						system("cls");						
@@ -153,7 +159,8 @@ int main(int argc, char *argv[]) {
 								}
 							}								
 						}
-						// IMPRIMIR
+						imprimir_lista(cont);
+						/* IMPRIMIR
 						cout<<setw(15)<<left<<"  Nombre"<<setw(15)<<left<<"  raza"<<setw(15)<<left<<"Peso"<<setw(15)<<left<<"Litro Leche"<<endl<<endl;
 						for (int x=0;x<cont;x++){
 		
@@ -171,7 +178,7 @@ int main(int argc, char *argv[]) {
 							}
 		
 							cout<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<raza1<<setw(15)<<left<<vacas[x].getPeso()<<setw(19)<<left<<vacas[x].getLitroLeche()<<endl;
-						}
+						}*/
 						opc=0;
 						system("pause");
 						system("cls");
@@ -203,7 +210,8 @@ int main(int argc, char *argv[]) {
 								}
 							}							
 						}
-						// IMPRIMIR
+						imprimir_lista(cont);
+						/* IMPRIMIR
 						cout<<setw(15)<<left<<"  Nombre"<<setw(15)<<left<<"  raza"<<setw(15)<<left<<"Peso"<<setw(15)<<left<<"Litro Leche"<<endl<<endl;
 						for (int x=0;x<cont;x++){
 		
@@ -221,7 +229,7 @@ int main(int argc, char *argv[]) {
 							}
 		
 							cout<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<raza1<<setw(15)<<left<<vacas[x].getPeso()<<setw(19)<<left<<vacas[x].getLitroLeche()<<endl;
-						}
+						}*/
 						opc=0;
 						system("pause");
 						system("cls");								
@@ -251,7 +259,8 @@ int main(int argc, char *argv[]) {
 								}
 							}							
 						}
-												// IMPRIMIR
+						imprimir_lista(cont);
+						/* IMPRIMIR
 						cout<<setw(15)<<left<<"  Nombre"<<setw(15)<<left<<"  raza"<<setw(15)<<left<<"Peso"<<setw(15)<<left<<"Litro Leche"<<endl<<endl;
 						for (int x=0;x<cont;x++){
 		
@@ -269,7 +278,7 @@ int main(int argc, char *argv[]) {
 							}
 		
 							cout<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<raza1<<setw(15)<<left<<vacas[x].getPeso()<<setw(19)<<left<<vacas[x].getLitroLeche()<<endl;
-						}
+						}*/
 						opc=0;
 						system("pause");
 						system("cls");						
@@ -284,4 +293,27 @@ int main(int argc, char *argv[]) {
 		
 	
 	return 0;
+}
+
+void imprimir_lista(int a) {
+	string raza1;
+	int cont=a;
+	cout<<setw(15)<<left<<"  Nombre"<<setw(15)<<left<<"  Raza"<<setw(15)<<left<<"Peso"<<setw(15)<<left<<"Litro Leche"<<endl<<endl;
+	for (int x=0;x<cont;x++){
+		
+		if (vacas[x].getRaza()==1){
+			raza1="Simmental";
+		}
+		else if(vacas[x].getRaza()==2){
+			raza1="Pasiega";
+		}
+		else if(vacas[x].getRaza()==3){
+			raza1="Jersey";
+		}
+		else if(vacas[x].getRaza()==4){
+			raza1="Guernsey";
+		}
+		
+		cout<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<raza1<<setw(15)<<left<<vacas[x].getPeso()<<setw(19)<<left<<vacas[x].getLitroLeche()<<endl;
+	}
 }		
