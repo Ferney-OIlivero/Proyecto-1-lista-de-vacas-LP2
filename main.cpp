@@ -32,7 +32,6 @@ int main(int argc, char *argv[]) {
 		cout<<"Opcion: ";
 		cin>>opc;
 		system("cls");
-	
 		switch (opc){
 		
 			case 1:
