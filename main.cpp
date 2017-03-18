@@ -11,6 +11,7 @@ using namespace std;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 //VARIABLES GLOBALES
 cows vacas[ANCHO];
+int opcOrden=0;
 
 void imprimir_lista(int a);
 void motodo_ordenamiento(int j, int c);
@@ -113,9 +114,9 @@ int main(int argc, char *argv[]) {
 				cout<<"3- Por Peso"<<endl;
 				cout<<"4- Por Litros de Leche"<<endl<<endl;
 				cout<<"Opcion: ";
-				cin>>opc;
+				cin>>opcOrden;
 				system("cls");
-				switch (opc){
+				switch (opcOrden){
 					case 1:
 						cout<<"\t\t\tOrden por Nombre"<<endl<<endl<<endl;
 						ordenarPorNombre(cont);
@@ -248,7 +249,20 @@ int main(int argc, char *argv[]) {
 void imprimir_lista(int a) {
 	string raza1;
 	int cont=a;
-	cout<<setw(15)<<left<<"  Nombre"<<setw(15)<<left<<"  Raza"<<setw(15)<<left<<"Peso"<<setw(15)<<left<<"Litro Leche"<<endl<<endl;
+	
+	if (opcOrden==1){
+		cout<<setw(15)<<left<<"Nombre"<<setw(15)<<left<<"Raza"<<setw(15)<<left<<"Peso"<<setw(15)<<left<<"Leche (Lts)"<<endl<<endl;
+	}
+	if (opcOrden==2){
+		cout<<setw(15)<<left<<"Raza"<<setw(15)<<left<<"Nombre"<<setw(15)<<left<<"Peso"<<setw(15)<<left<<"Leche (Lts)"<<endl<<endl;
+	}
+	if (opcOrden==3){
+		cout<<setw(15)<<left<<"Peso"<<setw(15)<<left<<"Nombre"<<setw(15)<<left<<"Raza"<<setw(15)<<left<<"Leche (Lts)"<<endl<<endl;
+	}
+	if (opcOrden==4){
+		cout<<setw(15)<<left<<"Leche (Lts)"<<setw(15)<<left<<"Nombre"<<setw(15)<<left<<"Raza"<<setw(15)<<left<<"Peso"<<endl<<endl;
+	}	
+			
 	for (int x=0;x<cont;x++){
 		
 		if (vacas[x].getRaza()==1){
@@ -264,7 +278,18 @@ void imprimir_lista(int a) {
 			raza1="Guernsey";
 		}
 		
-		cout<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<raza1<<setw(15)<<left<<vacas[x].getPeso()<<setw(19)<<left<<vacas[x].getLitroLeche()<<endl;
+		if (opcOrden==1){
+			cout<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<raza1<<setw(15)<<left<<vacas[x].getPeso()<<setw(19)<<left<<vacas[x].getLitroLeche()<<endl;
+		}
+		if (opcOrden==2){
+			cout<<setw(15)<<left<<raza1<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<vacas[x].getPeso()<<setw(19)<<left<<vacas[x].getLitroLeche()<<endl;
+		}
+		if (opcOrden==3){
+			cout<<setw(15)<<left<<vacas[x].getPeso()<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<raza1<<setw(19)<<left<<vacas[x].getLitroLeche()<<endl;
+		}
+		if (opcOrden==4){
+			cout<<setw(15)<<left<<vacas[x].getLitroLeche()<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<raza1<<setw(15)<<left<<vacas[x].getPeso()<<endl;
+		}		
 	}
 }
 
@@ -339,4 +364,4 @@ void ordenarPorNombre(int c){
 								
 		}							
 	}
-}		
+}	
