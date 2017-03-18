@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
 		switch (opc){
 		
 			case 1:
-								cout<<"\tIngrese los Datos de la Vaca"<<endl<<endl;
+				cout<<"\tIngrese los Datos de la Vaca"<<endl<<endl;
 				int v,a,i;
 				do{
 					a=0;
@@ -84,10 +84,10 @@ int main(int argc, char *argv[]) {
 				vacas[cont].setNombre(nombre);
 			
 				cout<<"\nRaza: "<<endl<<endl;
-				cout<<"   1- Simmental"<<endl;
-				cout<<"   2- Pasiega"<<endl;
-				cout<<"   3- Jersey"<<endl;
-				cout<<"   4- Guernsey"<<endl;
+				cout<<"   1- Guernsey"<<endl;
+				cout<<"   2- Jersey"<<endl;
+				cout<<"   3- Pasiega"<<endl;
+				cout<<"   4- Simmental"<<endl;
 				cin>>raza;
 				vacas[cont].setRaza(raza);
 			
@@ -266,16 +266,16 @@ void imprimir_lista(int a) {
 	for (int x=0;x<cont;x++){
 		
 		if (vacas[x].getRaza()==1){
-			raza1="Simmental";
+			raza1="Guernsey";
 		}
 		else if(vacas[x].getRaza()==2){
-			raza1="Pasiega";
-		}
-		else if(vacas[x].getRaza()==3){
 			raza1="Jersey";
 		}
+		else if(vacas[x].getRaza()==3){
+			raza1="Pasiega";
+		}
 		else if(vacas[x].getRaza()==4){
-			raza1="Guernsey";
+			raza1="Simmental";
 		}
 		
 		if (opcOrden==1){
