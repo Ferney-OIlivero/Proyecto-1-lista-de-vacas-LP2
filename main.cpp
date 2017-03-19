@@ -18,7 +18,7 @@ int opcOrden=0;
 
 	
 void imprimir_lista(int a);
-void motodo_ordenamiento(int j, int c);
+void motodo_ordenamiento(int j);
 void ordenOpcional(int pos, int cont);
 void ordenarPorNombre(int c);
 bool validar(string valor);
@@ -243,7 +243,7 @@ int main(int argc, char *argv[]) {
 							for(int i=0; i<cont; i++ ){
 								for(int j=0; j<=cont-2; j++){
 									if(vacas[j].getRaza() > vacas[j+1].getRaza()) {
-										motodo_ordenamiento(j, cont);
+										motodo_ordenamiento(j);
 									}
 								}
 														
@@ -280,7 +280,7 @@ int main(int argc, char *argv[]) {
 							for(int i=0; i<cont; i++ ){
 								for(int j=0; j<=cont-2; j++){
 									if(vacas[j].getPeso() > vacas[j+1].getPeso()) {
-										motodo_ordenamiento(j, cont);
+										motodo_ordenamiento(j);
 									}
 								}							
 							}
@@ -317,7 +317,7 @@ int main(int argc, char *argv[]) {
 							for(int i=0; i<cont; i++ ){
 								for(int j=0; j<=cont-2; j++){
 									if(vacas[j].getLitroLeche() > vacas[j+1].getLitroLeche()) {
-										motodo_ordenamiento(j, cont);
+										motodo_ordenamiento(j);
 									}
 								}							
 							}
@@ -402,28 +402,15 @@ void imprimir_lista(int a) {
 			cout<<setw(15)<<left<<vacas[x].getLitroLeche()<<setw(15)<<left<<vacas[x].getNombre()<<setw(15)<<left<<raza1<<setw(15)<<left<<vacas[x].getPeso()<<endl;
 		}		
 	}
+	cout<<endl;
 }
 
-void motodo_ordenamiento(int j, int c){
-	float aux;
-	int auxI;
-	string auxNom;
+void motodo_ordenamiento(int j){
+	cows aux;
 	
-	aux = vacas[j].getPeso();
-	vacas[j].setPeso(vacas[j+1].getPeso());
-	vacas[j+1].setPeso(aux);
-									
-	auxNom = vacas[j].getNombre();
-	vacas[j].setNombre(vacas[j+1].getNombre());
-	vacas[j+1].setNombre(auxNom);
-									
-	aux = vacas[j].getLitroLeche();
-	vacas[j].setLitroLeche(vacas[j+1].getLitroLeche());
-	vacas[j+1].setLitroLeche(aux);
-									
-	auxI = vacas[j].getRaza();
-	vacas[j].setRaza(vacas[j+1].getRaza());
-	vacas[j+1].setRaza(auxI);
+	aux = vacas[j];
+	vacas[j] = vacas[j+1];
+	vacas[j+1] = aux;						
 }
 
 void ordenarPorNombre(int c){
@@ -445,7 +432,7 @@ void ordenarPorNombre(int c){
 			}
 								
 			if(strcmp (nom , nom2) > 0) {
-				motodo_ordenamiento(j, cont);
+				motodo_ordenamiento(j);
 			}						
 								
 		}							
@@ -470,7 +457,7 @@ void ordenOpcional(int pos, int cont){
 			}
 								
 			if(strcmp (nom , nom2) > 0) {
-				motodo_ordenamiento(j, cont);
+				motodo_ordenamiento(j);
 			}						
 								
 		}							
